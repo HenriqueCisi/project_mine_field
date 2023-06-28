@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:project_mine_field/components/result_widget.dart';
 
 class MineFieldApp extends StatelessWidget {
   const MineFieldApp({super.key});
@@ -9,11 +8,14 @@ class MineFieldApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('MineField'),
-      ),
-      body: Container(child: Text('Board')),)
+      appBar: ResultWidget(won:true, onReset: _reset),
+      body: const Text('Board'),)
       ,
     );
   }
+
+  void _reset(){
+    print('aaaa');
+  }
+
 }
