@@ -53,18 +53,3 @@ class ResultWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(120);
 }
-
-
-        //     child: Container(
-        //   padding: const EdgeInsets.all(10),
-        //   child: CircleAvatar(
-        //     backgroundColor: _getColor(),
-        //     child: IconButton(
-        //       padding: const EdgeInsets.all(0),
-        //       icon: Icon(_getIcon()),
-        //       color: Colors.black,
-        //       iconSize: 35,
-        //       onPressed: onReset(),
-        //     ),
-        //   ),
-        // )
