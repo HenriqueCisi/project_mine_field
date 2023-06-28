@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:project_mine_field/components/field_widget.dart';
+import 'package:project_mine_field/components/board_widget.dart';
 import 'package:project_mine_field/components/result_widget.dart';
+import 'package:project_mine_field/models/board.dart';
 import 'package:project_mine_field/models/field.dart';
 
 class MineFieldApp extends StatelessWidget {
@@ -8,19 +9,23 @@ class MineFieldApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    Field field = Field(line: 0, grid: 0);
-
     return MaterialApp(
       home: Scaffold(
-      appBar: ResultWidget(won:true, onReset: _reset),
-      body: FieldWidget(field: field, onOpenField: _open, onSwitchMark: _mark)
-      ,)
-      ,
+        appBar: ResultWidget(won: false, onReset: _reset),
+        body: BoardWidget(
+          board: Board(
+            linesQt: 15,
+            gridsQt: 15,
+            bombsQt: 0,
+          ),
+          onOpenField: _open,
+          onSwitchMark: _mark,
+        ),
+      ),
     );
   }
 
-  void _reset(){
+  void _reset() {
     print('reset');
   }
 
@@ -31,5 +36,4 @@ class MineFieldApp extends StatelessWidget {
   void _mark(Field field) {
     print('mark');
   }
-
 }
