@@ -38,7 +38,7 @@ class Board {
   void _sortMines() {
     int qt = 0;
 
-    if (bombsQt < linesQt * gridsQt) {
+    if (bombsQt > linesQt * gridsQt) {
       return;
     }
 

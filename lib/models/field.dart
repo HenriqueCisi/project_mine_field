@@ -42,6 +42,12 @@ class Field {
       _hasExploded = true;
       throw ExplosionException();
     }
+
+    if (isSafeToOpenNeighbor) {
+      for (var v in fields) {
+        v.openField();
+      }
+    }
   }
 
   bool get isSafeToOpenNeighbor {

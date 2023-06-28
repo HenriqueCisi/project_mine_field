@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:project_mine_field/models/field.dart';
 
 class FieldWidget extends StatelessWidget {
@@ -12,6 +13,22 @@ class FieldWidget extends StatelessWidget {
       required this.onSwitchMark,
       super.key});
 
+  Widget _getImage() {
+    int mineCount = field.mineCount;
+
+    if (field.isOpen && field.hasMine && field.hasExploded) {
+      return Image.asset('assets/images/bomba_0.jpeg');
+    } else if (field.isOpen && field.hasMine) {
+      return Image.asset('assets/images/bomba_1.jpeg');
+    } else if (field.isOpen) {
+      return Image.asset('assets/images/aberto_$mineCount.jpeg');
+    } else if (field.isMarked) {
+      return Image.asset('assets/images/bandeira.jpeg');
+    } else {
+      return Image.asset('assets/images/fechado.jpeg');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -19,25 +36,5 @@ class FieldWidget extends StatelessWidget {
       onLongPress: () => onSwitchMark(field),
       child: _getImage(),
     );
-  }
-
-  Widget _getImage(){
-    int mineCount = field.mineCount;
-
-    if(field.isOpen && field.hasMine && field.hasExploded){
-      return Image.asset('assets/images/bomba_0.jpeg');
-    }
-    else if (field.isOpen && field.hasMine) {
-      return Image.asset('assets/images/bomba_1.jpeg');
-    }
-    else if (field.isOpen) {
-      return Image.asset('assets/images/aberto_$mineCount.jpeg');
-    }
-    else if (field.isMarked) {
-      return Image.asset('assets/images/bandeira.jpeg');
-    }
-    else{
-       return Image.asset('assets/images/fechado.jpeg');
-    }
   }
 }
